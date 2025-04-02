@@ -5,10 +5,16 @@ export default function Groups() {
     return (
         <MainLayout>
             <div>
-                <h1 className="text-white text-2xl mb-4">Goals Group</h1>
+                <div className="w-full flex justify-between p-4 items-center">
+                    <h1 className="text-zinc-200 text-2xl mb-4">Goals Group</h1>
+                    <button className="text-white text-2xl mb-4 bg-blue-950 p-4 rounded-md">Create Goal</button>
+                </div>
                 {/* <p className="text-white">Groups page</p> */}
-                <div className="mt-4">
-                    <GoalsCard title="Leetcode Grind Quest" description="Complete 5 Questions on Leetcode Daily" stakeAmount="0.001 ETH" details="/dashboard"/>
+                <div className="mt-4 flex flex-col gap-4">
+                    <GoalsCard title="Leetcode Grind Quest" description="Complete 5 Questions on Leetcode Daily" stakeAmount="0.001 ETH" details="/dashboard" />
+                    <GoalsCard title="Leetcode Grind Quest" description="Complete 5 Questions on Leetcode Daily" stakeAmount="0.001 ETH" details="/dashboard" />
+                    <GoalsCard title="Leetcode Grind Quest" description="Complete 5 Questions on Leetcode Daily" stakeAmount="0.001 ETH" details="/dashboard" />
+                    <GoalsCard title="Leetcode Grind Quest" description="Complete 5 Questions on Leetcode Daily" stakeAmount="0.001 ETH" details="/dashboard" />
                 </div>
             </div>
         </MainLayout>

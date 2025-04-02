@@ -1,7 +1,7 @@
 "use client";
 
-import { ConnectButton } from "thirdweb/react";
-import { client } from "@/app/client";
+// import { ConnectButton } from "thirdweb/react";
+// import { client } from "@/app/client";
 export const Appbar = () => {
     return (
     <div className="">
@@ -12,13 +12,13 @@ export const Appbar = () => {
             </div>
 
             <div className="mt-4 lg:mt-0 flex space-x-3">
-                          <ConnectButton
+                          {/* <ConnectButton
                             client={client}
                             appMetadata={{
                               name: "Example App",
                               url: "https://example.com",
                             }}
-                          />
+                          /> */}
                 {/* <button className="bg-zinc-100 text-zinc-800 hover:bg-zinc-200  px-4 py-2 rounded-lg transition duration-200 flex items-center">
                     <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 mr-2" viewBox="0 0 20 20" fill="currentColor">
                         <path fillRule="evenodd" d="M10 3a1 1 0 011 1v5h5a1 1 0 110 2h-5v5a1 1 0 11-2 0v-5H4a1 1 0 110-2h5V4a1 1 0 011-1z" clipRule="evenodd"></path>
