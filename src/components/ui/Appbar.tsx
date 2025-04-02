@@ -1,7 +1,7 @@
 "use client";
 
 import { ConnectButton } from "thirdweb/react";
-import { client } from "../../client"
+import { client } from "@/app/client";
 export const Appbar = () => {
     return (
     <div className="">

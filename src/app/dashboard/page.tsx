@@ -1,6 +1,6 @@
-import { StatsOverview } from "../components/ui/StatsOverview";
+import { StatsOverview } from "@/components/ui/StatsOverview";
 import MainLayout from "../mainLayout";
-import DashboardCard from "../components/DashboardCard";
+import DashboardCard from "@/components/DashboardCard";
 
 export default function Dashboard() {
     return (
