@@ -24,11 +24,11 @@ export default function Goal() {
 
     return (
         <MainLayout>
-            <div className="bg-blue-950 text-zinc-200 rounded-2xl p-6 shadow-lg w-full h-2xl  ">
+            <div className="bg-blue-950 text-zinc-200 rounded-2xl p-6 shadow-lg w-full  ">
                 <div className="flex flex-col gap-4">
                     <h1 className="text-2xl font-bold">Task: Leetcode Grind Challenge</h1>
                     <p className="text-zinc-300">
-                        Solve 5 questions minimum daily on Leetcode for 10 continuous days.
+                        Solve 5 questions minimum daily on Leetcode for 10 continuous days.s
                     </p>
                     <div className="mt-2">
                         <h2 className="text-xl font-semibold">Rules:</h2>
