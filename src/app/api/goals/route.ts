@@ -26,7 +26,6 @@ export async function POST(req: NextRequest) {
 
 export async function GET(req: NextRequest) {
   await dbConnect();
-
   try {
     const goals = await Goal.find({});
     return NextResponse.json({ message: "Goals retrieved successfully", goals });

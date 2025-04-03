@@ -26,3 +26,13 @@ export async function POST(req: NextRequest, { params }: { params: { id: string 
     return NextResponse.json({ error: "Error joining group" }, { status: 500 });
   }
 }
+export async function GET() {
+  await dbConnect();
+  try {
+    const groups = await GoalGroup.find({}).lean();
+    return NextResponse.json({ message: "Goal groups retrieved successfully", groups });
+  } catch (error) {
+    console.error("Error fetching goal groups:", error);
+    return NextResponse.json({ error: "Error fetching goal groups" }, { status: 500 });
+  }
+}
