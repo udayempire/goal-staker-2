@@ -1,5 +1,6 @@
 import { GoalsCard } from "@/components/GoalsCard";
 import MainLayout from "../mainLayout"
+import Link from "next/link";
 
 export default function Groups() {
     return (
@@ -7,7 +8,7 @@ export default function Groups() {
             <div>
                 <div className="w-full flex justify-between p-4 items-center">
                     <h1 className="text-zinc-200 text-2xl mb-4">Goals Group</h1>
-                    <button className="text-white text-2xl mb-4 bg-blue-950 p-4 rounded-md">Create Goal</button>
+                    <Link href={"/create-goal"} className="text-white text-2xl mb-4 bg-blue-950 p-4 rounded-2xl">Create Goal</Link>
                 </div>
                 {/* <p className="text-white">Groups page</p> */}
                 <div className="mt-4 flex flex-col gap-4">
