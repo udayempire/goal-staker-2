@@ -14,5 +14,6 @@ export function useWalletDetails(client: any, chain: any): WalletDetails {
     chain,
     address,
   });
+  console.log("Walletdetails",address,balance)
   return { address, balance, isLoading };
 }

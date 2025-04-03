@@ -1,7 +1,10 @@
+"use client"
 import { GoalForm } from "@/components/GoalForm";
 import MainLayout from "../mainLayout";
-
+import { useWalletAddress } from "@/hooks/useWalletAddress";
 export default function CreateGoal() {
+    const address = useWalletAddress();
+    console.log(address);
     return (
         <MainLayout>
             <div className="p-6">
