@@ -1,33 +1,20 @@
-import mongoose from 'mongoose';
-
-const MONGODB_URI = process.env.MONGODB_URI;
-
+import mongoose from "mongoose";
+const MONGODB_URI = process.env.MONGODB_URI as string;
 if (!MONGODB_URI) {
-  throw new Error('Please define the MONGODB_URI environment variable inside .env.local');
+  throw new Error("Please add your Mongo URI to .env.local");
+}
+export async function dbConnect() {
+  if (mongoose.connection.readyState >= 1) return;
+  await mongoose.connect(MONGODB_URI);
 }
 
-// Define type for cached mongoose connection
-interface MongooseCache {
-  conn: typeof mongoose | null;
-  promise: Promise<typeof mongoose> | null;
+export async function connectToDatabase() {
+  if (mongoose.connection.readyState >= 1 && mongoose.connection.db) {
+    return mongoose.connection.db;
+  }
+  await mongoose.connect(MONGODB_URI);
+  if (!mongoose.connection.db) {
+    throw new Error("Database not available after connection");
+  }
+  return mongoose.connection.db;
 }
-
-// Type-safe global mongoose cache
-let cached: MongooseCache = (global as any).mongoose || { conn: null, promise: null };
-
-const dbConnect = async () => {
-  if (cached.conn) {
-    return cached.conn;
-  }
-
-  if (!cached.promise) {
-    cached.promise = mongoose.connect(MONGODB_URI).then((mongoose) => mongoose);
-  }
-
-  cached.conn = await cached.promise;
-  return cached.conn;
-};
-
-(global as any).mongoose = cached;
-
-export default dbConnect;
