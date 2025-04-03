@@ -1,15 +1,17 @@
 "use client";
 import { useState } from "react";
-
+import axios from "axios";
+import { useWalletAddress } from "@/hooks/useWalletAddress";
 export const GoalForm = () => {
+    const address = useWalletAddress();
     const [formData, setFormData] = useState({
-        title: "",
+        goalTitle: "",
         description: "",
         rules: "",
-        participants: "",
         stakeAmount: "",
-        registrationDate: "",
+        startDate: "",
         endDate: "",
+        walletAddress: ""
     });
 
     const handleChange = (
@@ -19,25 +21,28 @@ export const GoalForm = () => {
         setFormData((prev) => ({ ...prev, [name]: value }));
     };
 
-    const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
-        // Convert the rules textarea value into an array (split by newlines)
-        const rulesArray = formData.rules
-            .split("\n")
-            .map((rule) => rule.trim())
-            .filter((rule) => rule.length > 0);
         const finalData = {
-            title: formData.title,
+            goalTitle: formData.goalTitle,
             description: formData.description,
-            rules: rulesArray,
-            participants: Number(formData.participants),
+            rules: formData.rules, // Keep rules as a single string
             stakeAmount: formData.stakeAmount,
-            registrationDate: formData.registrationDate,
+            startDate: formData.startDate,
             endDate: formData.endDate,
+            walletAddress: address
         };
-        console.log("Submitted Goal Data:", finalData);
+        try {
+            const response = await axios.post("http://localhost:3000/api/goals", finalData);
+            console.log("Goal created successfully:", response.data);
+            alert("Goal created successfully!");
+        } catch (error) {
+            console.error("Error creating goal:", error);
+            alert("Failed to create goal.");
+        }
         alert("Goal data submitted. Check the console for details.");
     };
+    
 
     return (
         <form
@@ -48,8 +53,8 @@ export const GoalForm = () => {
                 <label className="block text-zinc-300 font-semibold">Title:</label>
                 <input
                     type="text"
-                    name="title"
-                    value={formData.title}
+                    name="goalTitle"
+                    value={formData.goalTitle}
                     onChange={handleChange}
                     className="w-full px-3 py-2 border-2  rounded bg-zinc-300 text-black placeholder:text-zinc-500 focus:outline-none focus:ring-2 focus:ring-blue-600"
                     placeholder="Enter goal title"
@@ -102,8 +107,8 @@ export const GoalForm = () => {
                     </label>
                     <input
                         type="date"
-                        name="registrationDate"
-                        value={formData.registrationDate}
+                        name="startDate"
+                        value={formData.startDate}
                         onChange={handleChange}
                         className="w-full px-3 py-2 border border-indigo-950 rounded bg-zinc-300 text-black placeholder:text-zinc-500 focus:outline-none focus:ring-2 focus:ring-blue-600"
                         required
