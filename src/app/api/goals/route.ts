@@ -23,3 +23,14 @@ export async function POST(req: NextRequest) {
     return NextResponse.json({ error: "Error creating goal" }, { status: 500 });
   }
 }
+
+export async function GET(req: NextRequest) {
+  await dbConnect();
+
+  try {
+    const goals = await Goal.find({});
+    return NextResponse.json({ message: "Goals retrieved successfully", goals });
+  } catch (error) {
+    return NextResponse.json({ error: "Error fetching goals" }, { status: 500 });
+  }
+}

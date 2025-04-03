@@ -1,7 +1,7 @@
 import { GoalsCard } from "@/components/GoalsCard";
 import MainLayout from "../mainLayout"
 import Link from "next/link";
-
+import axios from "axios";
 export default function Groups() {
     return (
         <MainLayout>
