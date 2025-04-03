@@ -4,7 +4,6 @@ import { GoalGroup } from "@/models/goalGroup";
 
 export async function GET() {
   await dbConnect();
-
   try {
     const groups = await GoalGroup.find().populate("goalId");
     return NextResponse.json({ groups });
