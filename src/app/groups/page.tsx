@@ -48,7 +48,7 @@ export default function Groups() {
                                 title={goal.goalId.goalTitle}
                                 description={goal.goalId.description}
                                 stakeAmount={goal.goalId.stakeAmount}
-                                details={`/groups/${goal._id}`}
+                                details={`/full-goal?groupId=${goal._id}`}
                             />
                         ))
                     ) : (

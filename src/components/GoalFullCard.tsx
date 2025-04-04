@@ -2,22 +2,22 @@
 import { useRouter } from "next/navigation";
 
 export interface GoalFullCardProps { 
-    title: string;
+    goalTitle: string;
     description: string;
-    rules: string[];
+    rules: string;
     participants: number;
     stakeAmount: string;
-    registrationDate: string;
+    startDate: string;
     endDate: string;
 }
 
 export const GoalFullCard = ({
-    title,
+    goalTitle,
     description,
     rules,
     participants,
     stakeAmount,
-    registrationDate,
+    startDate,
     endDate
 }: GoalFullCardProps) => {
     const router = useRouter();
@@ -34,7 +34,7 @@ export const GoalFullCard = ({
         <div className="bg-blue-950 text-zinc-200 rounded-2xl p-6 shadow-lg w-full h-5xl">
             <div className="flex flex-col gap-4">
                 <div className="flex justify-between items-center">
-                    <h1 className="text-2xl font-bold">{title}</h1>
+                    <h1 className="text-2xl font-bold">{goalTitle}</h1>
                     <div className="bg-green-600 text-white px-3 py-1 rounded-full text-sm font-semibold shadow-md">
                         Stake: {stakeAmount}
                     </div>
@@ -45,9 +45,7 @@ export const GoalFullCard = ({
                 <div className="mt-2">
                     <h2 className="text-xl font-semibold">Rules:</h2>
                     <ul className="list-disc list-inside text-zinc-300 space-y-1">
-                        {rules.map((rule, index) => (
-                            <li key={index}>{rule}</li>
-                        ))}
+                        {rules}
                     </ul>
                 </div>
                 <div className="mt-4 space-y-1">
@@ -55,7 +53,7 @@ export const GoalFullCard = ({
                         Number of Participants: <span className="font-semibold">{participants}</span>
                     </p>
                     <p className="text-zinc-300">
-                        Last Registration Date: <span className="font-semibold">{registrationDate}</span>
+                        Last Registration Date: <span className="font-semibold">{startDate}</span>
                     </p>
                     <p className="text-zinc-300">
                         End Date: <span className="font-semibold">{endDate}</span>

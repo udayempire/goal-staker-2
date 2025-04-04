@@ -7,6 +7,12 @@ const goalSchema = new Schema({
   stakeAmount: { type: String, required: true },
   startDate: { type: Date, required: true },
   endDate: { type: Date, required: true },
+  proofOfLink: { type: String, default: "" },  // New field for proof link
+  status: { 
+    type: String, 
+    enum: ["pending", "submitted", "validated"], 
+    default: "pending"  // New field for status
+  },
   createdAt: { type: Date, default: Date.now },
   creator: { type: String, required: true }, // Wallet address
 });
