@@ -10,7 +10,6 @@ export default function ValidateGoals() {
             </div>
             <div className="mt-4 flex flex-col gap-4">
                 <GoalValidationCard title="LeetCode Grind Quest" description="Complete 5 Leetcode Questions Daily" stakeAmount="0.01ETH" proofLink="https://udayempire.tech"/>
-                <GoalValidationCard title="LeetCode Grind Quest" description="Complete 5 Leetcode Questions Daily" stakeAmount="0.01ETH" proofLink="https://udayempire.tech"/>
             </div>
 
         </MainLayout>
