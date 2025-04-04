@@ -5,7 +5,7 @@ import { client } from "@/app/client";
 export const Appbar = () => {
     return (
     <div className="">
-        <header className="lg:flex lg:items-center lg:justify-between  bg-indigo-950 p-3 px-8">
+        <header className="lg:flex lg:items-center lg:justify-between  bg-blue-950 p-3 px-8">
             <div>
                 <h1 className="text-2xl font-bold text-zinc-200 dark:text-white">Dashboard</h1>
                 <p className="mt-1 text-sm text-gray-300 dark:text-gray-400">Welcome back, track your goals and progress</p>

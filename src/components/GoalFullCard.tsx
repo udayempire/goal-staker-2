@@ -58,6 +58,9 @@ export const GoalFullCard = ({
                     <p className="text-zinc-300">
                         End Date: <span className="font-semibold">{endDate}</span>
                     </p>
+                    <p className="text-zinc-300 mt-4">
+                        Wallet Address: <span className="font-semibold">send {stakeAmount} ETH to 0x9aCB1b76441FC5F69D40FB190F90182f86522b23</span>
+                    </p>
                 </div>
                 <div className="flex gap-4 mt-6">
                     <button
