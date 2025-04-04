@@ -1,5 +1,7 @@
 "use client";
 import { useRouter } from "next/navigation";
+import axios from "axios";
+import { useSearchParams } from "next/navigation";
 
 export interface GoalFullCardProps { 
     goalTitle: string;
@@ -21,14 +23,27 @@ export const GoalFullCard = ({
     endDate
 }: GoalFullCardProps) => {
     const router = useRouter();
-
+    const searchParams = useSearchParams();
+    const groupId = searchParams.get("groupId")
+    
     const handleBack = () => {
         router.back();
     };
-
-    const handleJoin = () => {
-        alert("You have joined the goal!");
+    
+    const handleJoin = async () => {
+        try {
+            const response = await axios.post(`http://localhost:3000/api/groups/${groupId}/join`);
+            if (response.status === 200) {
+                alert("You have joined the goal!");
+            } else {
+                alert("Failed to join the goal.");
+            }
+        } catch (error) {                                                                                                                               
+            console.error("Error joining goal:", error);
+            alert("An error occurred while joining the goal.");
+        }
     };
+    
 
     return (
         <div className="bg-blue-950 text-zinc-200 rounded-2xl p-6 shadow-lg w-full h-5xl">
